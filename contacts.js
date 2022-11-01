@@ -8,8 +8,13 @@ async function updateContacts(contacts) {
 }
 
 async function listContacts() {
-  const contacts = await fs.readFile(contactsPath);
-  return JSON.parse(contacts);
+  try {
+    const response = await fs.readFile(contactsPath);
+    let contacts = JSON.parse(response);
+    return contacts;
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 async function getContactById(id) {
@@ -30,16 +35,20 @@ async function removeContact(id) {
 }
 
 async function addContact({ name, email, phone }) {
-  const contacts = await listContacts();
-  const newContact = {
-    id: Date.now().toString(),
-    name,
-    email,
-    phone,
-  };
-  contacts.push(newContact);
-  await updateContacts(contacts);
-  return newContact;
+  try {
+    const contacts = await listContacts();
+    const newContact = {
+      id: Date.now().toString(),
+      name,
+      email,
+      phone,
+    };
+    const contactList = [...contacts, newContact];
+    await updateContacts(contactList);
+    return newContact;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = {
