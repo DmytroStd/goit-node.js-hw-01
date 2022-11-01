@@ -1,0 +1,27 @@
+{
+  "name": "goit-node.js-hw-01",
+  "version": "1.0.0",
+  "description": "home-work-01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmytroStd/goit-node.js-hw-01.git"
+  },
+  "author": "Stupak Dima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmytroStd/goit-node.js-hw-01/issues"
+  },
+  "dependencies": {
+    "commander": "^9.4.1",
+    "yargs": "^17.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
